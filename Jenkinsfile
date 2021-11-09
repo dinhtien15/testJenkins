@@ -7,8 +7,8 @@ node {
     sh "git rev-parse --short HEAD > commit-id"
 
     tag = readFile('commit-id').replace("\n", "").replace("\r", "")
-    appName = "hello-nam"
-    // registryHost = "10.9.2.151:5000/"
+    appName = "website-demo"
+    // registryHost = "192.168.19.5:5000/"
     imageName = "${env.registry_host1}/${appName}:${tag}"
     env.BUILDIMG=imageName
 
@@ -20,7 +20,7 @@ node {
 
         sh "docker push ${imageName}"
 
-    stage "Deploy"
+   stage "Deploy"
         sh "sed -i s/xxx/$tag/g k8s/deployment.yaml"
 	sh "kubectl ${env.token_kube} apply -f k8s/deployment.yaml"
 }
