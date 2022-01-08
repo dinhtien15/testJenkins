@@ -12,6 +12,8 @@ node {
     imageName = "${env.registry_host1}/${appName}:${tag}"
     env.BUILDIMG=imageName
 
+    stage "Unitest"
+        
     stage "Build"
     
         sh "docker build -t ${imageName} ."
