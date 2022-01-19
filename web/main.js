@@ -14,8 +14,8 @@ alert(sex);
  * 
 */
 var a = 1;
-var b = 2;
+va b = 2
 
-var c = a + b;
+var c = a + 
 
 console.log(c);
