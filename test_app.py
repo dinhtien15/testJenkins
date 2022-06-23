@@ -37,7 +37,7 @@ if __name__ == "__main__":
     
 rpm -Uvh https://repo.zabbix.com/zabbix/5.4/rhel/7/x86_64/zabbix-release-5.4-1.el7.noarch.rpm && yum install zabbix-agent -y
 sed -i -e 's/\(Hostname=Zabbix server\).*//' /etc/zabbix/zabbix_agentd.conf && sed -i -e 's/\(Server=127.0.0.1\).*//' /etc/zabbix/zabbix_agentd.conf
-echo Hostname=$(hostname -I | cut -f1 -d' ') >>/etc/zabbix/zabbix_agentd.conf && echo ServerActive=10.9.3.157 >>/etc/zabbix/zabbix_agentd.conf
+echo Hostname=$(hostname -I | cut -f1 -d' ') >>/etc/zabbix/zabbix_agentd.conf && echo Server=192.168.100.193 >>/etc/zabbix/zabbix_agentd.conf
 echo StartAgents=0 >>/etc/zabbix/zabbix_agentd.conf
 service zabbix-agent restart && systemctl enable zabbix-agent
 firewall-cmd --zone=public --add-port=10050-10051/tcp --permanent
